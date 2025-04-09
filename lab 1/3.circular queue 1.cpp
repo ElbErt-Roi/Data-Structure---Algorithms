@@ -9,7 +9,6 @@ void display();
 int front=-1;
 int rear=-1;
 int a[MAXSIZE];
-int count=0;
 int main(){
 	int n,i,opt;
 	do{
@@ -22,13 +21,13 @@ int main(){
 		switch(opt)
 		{
 			case 1:
-				printf("Enter a number to insert into the queue: ");
+				printf("Enter a number to insert into the Queue: ");
 				scanf("%d",&n);
 				enque(n);
 				break;
 			case 2:
 				n=deque();
-				printf("\nThe deleted item is %d",n);
+				printf("\nThe Deleted item is %d",n);
 				break;
 			case 3:
 				display();
@@ -44,48 +43,56 @@ int main(){
 		
 void enque (int item)
 	{
-		if(count==MAXSIZE){
+		if(front==0 && rear == MAXSIZE-1){
 		
-		printf("Queue is FULL");
+		printf("**Queue is FULL**");
 	}else{
 		if(front==-1 && rear==-1){
 			front=0;
 			rear=0;
 		}
-	
-	else
-	{
-		rear=(rear+1)%MAXSIZE;
-	}
-	a[rear]=item;
-	count++;	
+		else if (front!=0 && rear==MAXSIZE-1)
+		rear=0;
+		else
+		rear++;
+		a[rear]=item;
 	}
 	}
 int deque()
 	{
 		int item;
-		if(count==0)
+		if(front==-1 && front==-1)
 		{
-			printf("\Queue is EMPTY");
+			printf("**Queue is EMPTY**");
 			return -1;
-		}else{
-			item=a[front];
-			front=(front+1)%MAXSIZE;
-			count--;
-			return item;
 		}
+		item=a[front];
+		if(front==rear)
+		front=rear=-1;
+		else if(front==MAXSIZE-1)
+		front=0;
+		else
+		front++;
+		return item;
 		
 	}
 void display()
-	
 {
 	printf("The items in the Queue are: ");
-	int i, j=count;
-	for(i=front; j!=0; j--){
-		
-		printf("%d ",a[i]);
-		i=(i+1)%MAXSIZE;
-}
+	int i;
+	if(front<rear){
+		for(i=front;i<=rear;i++){
+			printf("%d-->",a[i]);
+		}
+	}
+	else{
+		for(i=front;i<=MAXSIZE-1;i++){
+			printf("%d-->",a[i]);
+		}
+		for(i=0;i<=rear;i++){
+			printf("%d-->",a[i]);
+	}
+	}
 
 }
 

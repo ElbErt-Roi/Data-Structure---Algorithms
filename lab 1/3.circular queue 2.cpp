@@ -9,6 +9,7 @@ void display();
 int front=-1;
 int rear=-1;
 int a[MAXSIZE];
+int count=0;
 int main(){
 	int n,i,opt;
 	do{
@@ -43,7 +44,7 @@ int main(){
 		
 void enque (int item)
 	{
-		if(front==0 && rear == MAXSIZE-1){
+		if(count==MAXSIZE){
 		
 		printf("Queue is FULL");
 	}else{
@@ -51,48 +52,40 @@ void enque (int item)
 			front=0;
 			rear=0;
 		}
-		else if (front==0 && rear==MAXSIZE-1)
-		rear=0;
-		else
-		rear++;
-		a[rear]=item;
+	
+	else
+	{
+		rear=(rear+1)%MAXSIZE;
+	}
+	a[rear]=item;
+	count++;	
 	}
 	}
 int deque()
 	{
 		int item;
-		if(front==-1 && front==-1)
+		if(count==0)
 		{
 			printf("\Queue is EMPTY");
-			return -1;
+			return 0;
+		}else{
+			item=a[front];
+			front=(front+1)%MAXSIZE;
+			count--;
+			return item;
 		}
-		item=a[front];
-		if(front==rear)
-		front=rear=-1;
-		else if(front==MAXSIZE-1)
-		front=0;
-		else
-		front++;
-		return item;
 		
 	}
 void display()
+	
 {
 	printf("The items in the Queue are: ");
-	int i;
-	if(front<rear){
-		for(i=front;i<rear;i++){
-			printf("%d ",a[i]);
-		}
-	}
-	else{
-		for(i=front;i<=MAXSIZE-1;i++){
-			printf("%d ",a[i]);
-		}
-		for(i=0;i<=rear;i++){
-			printf("%d ",a[i]);
-	}
-	}
+	int i, j=count;
+	for(i=front; j!=0; j--){
+		
+		printf("%d ",a[i]);
+		i=(i+1)%MAXSIZE;
+}
 
 }
 
