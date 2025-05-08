@@ -22,7 +22,7 @@ int main(){
 		printf("\n1. Enqueue:");
 		printf("\n2. Dequeue");
 		printf("\n3. Display");
-		printf("\n4. Exit");
+		printf("\n4. Exit\n");
 		scanf("%d",&ch);
 	
 	switch(ch)	{
