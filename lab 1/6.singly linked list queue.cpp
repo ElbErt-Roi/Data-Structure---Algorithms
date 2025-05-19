@@ -28,7 +28,7 @@ int main(){
 	switch(ch)	{
 
 	case 1:
-		printf("Enter Date to Enque into stack...");
+		printf("Enter Data to Enque into stack...");
 		scanf("%d",&num);
 		enqu(num);
 		break;
@@ -71,7 +71,7 @@ struct Node *newnode;
 void dequ(){
 struct Node *temp;
 	if(front==NULL)
-	printf("**QUEUE IS FULL**");
+	printf("**QUEUE IS EMPTY**");
 	
 	else{
 		temp=front;
@@ -85,7 +85,7 @@ void display(){
 	
 struct Node *temp;
 	if(front==NULL)
-	printf("**QUAUE IS FULL**");
+	printf("**QUAUE IS EMPTY**");
 	else{
 		temp=front;
 		printf("ELEMENT ARE: \n");
