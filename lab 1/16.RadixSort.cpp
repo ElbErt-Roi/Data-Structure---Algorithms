@@ -59,6 +59,6 @@ int main(){
 	int a[]={121, 423, 7372, 32, 52, 5, 2, 12};
 	int n = sizeof(a)/sizeof(a[0]);
 	radixSort(a,n);
-	printArr(a,n);\
+	printArr(a,n);
 	return 0;
 }
